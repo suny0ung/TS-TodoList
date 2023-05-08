@@ -1,13 +1,10 @@
-import { css, jsx } from "@emotion/react";
+// import { css, jsx } from "@emotion/react";
+import styled from "@emotion/styled";
 import { useState } from "react";
 import './App.css'
 import TodoForm from "./component/TodoForm";
 import TodoList from "./component/TodoList";
 import {Todo} from "./component/interfacesTodo";
-
-// type TodoInfo = {
-//   info : Todo
-// }
 
 //Todo Emotion Provider 설정
 function App() {
@@ -15,14 +12,26 @@ function App() {
   const [inputArray, setInputArray] = useState<Todo[]>([]);
 
   return (
-    <div>
-      <h1> ToDo List </h1>
-      <TodoList/>
-      <TodoForm />
-    </div>
+    <TotalWrap>
+      <div>
+        <Title> ToDo List </Title>
+        <TodoList inputArray={inputArray}/>
+        <TodoForm inputArray={inputArray} setInputArray={setInputArray}/>
+      </div>
+    </TotalWrap>
 
 
   )
 }
 
 export default App;
+
+const TotalWrap = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Title = styled.h1`
+  display: flex;
+  justify-content: center;
+`;

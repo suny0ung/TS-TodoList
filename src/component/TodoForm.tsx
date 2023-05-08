@@ -1,19 +1,21 @@
 import React, { useState, Dispatch, SetStateAction  } from "react";
 import styled from "@emotion/styled";
-import {v4 as uuidv4} from 'uuid';
+// import {v4 as uuidv4} from 'uuid';
+import {v4} from 'uuid';
+
 import {Todo} from './interfacesTodo'
-import { Value } from "sass";
 
 type TodoFormProps = {
   inputArray: Todo[];
-  setInputArray: Dispatch<SetStateAction<string[]>>
+  setInputArray: Dispatch<SetStateAction<Todo[]>>
+  //Dispatch<SetStateAction>찾아보기
   // setInputArray: React.Dispatch<React.SetStateAction<Todo>>;
 }
 
 function TodoForm({inputArray, setInputArray}:TodoFormProps){
   const [inputValue, setInputValue] = useState<string>('');
 
-  const uuid = uuidv4();
+  const uuid = v4();
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
@@ -21,12 +23,16 @@ function TodoForm({inputArray, setInputArray}:TodoFormProps){
   }
 
   function addTodo (){
-    // inputArray.concat(id: uuid, Value: inputValue )
-    
-    setInputArray((prev: inputArray) => ([
-      ...prev,
-      {id: uuid, value: inputValue}
-    ]))
+    const newTodo = {id: uuid, inputValue: inputValue};
+
+    setInputArray([...inputArray, newTodo]);
+
+    // inputArray.push({id: uuid, value: inputValue})
+
+    // setInputArray((prev: inputArray) => ([
+    //   ...prev,
+    //   {id: uuid, value: inputValue}
+    // ]))
     setInputValue('')
   }
 
@@ -45,18 +51,20 @@ function TodoForm({inputArray, setInputArray}:TodoFormProps){
 export default TodoForm;
 
 const Form = styled.form`
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const InputBox = styled.input`
-width: 400px;
-height: 30px;
+  width: 400px;
+  height: 30px;
 `;
 
 const InputButton = styled.button`
-width: 70px;
-height: 37px;
-font-size: 13px;
+  width: 70px;
+  height: 37px;
+  border: 1px solid gray;
+  font-size: 13px;
+  border-radius: 0;
 `;
