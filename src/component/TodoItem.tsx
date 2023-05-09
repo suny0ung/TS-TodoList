@@ -12,7 +12,7 @@ function TodoItem({id, value}: TodoItemProps){
     <ItemWrap key={id}>
       <DoneButton />
       <Item>{value}</Item>
-      <RemoveButton />
+      <RemoveButton id={id}/>
     </ItemWrap>
   )
 }
@@ -27,6 +27,5 @@ const ItemWrap = styled.div`
 
 const Item = styled.p`
   width: 100%;
-  padding: 3px 35px;
   background-color: yellow;
 `;

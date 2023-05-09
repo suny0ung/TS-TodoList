@@ -1,9 +1,17 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
-function RemoveButton (){
+type RemoveProps = {
+  id : string;
+}
+
+function RemoveButton ({id}: RemoveProps){
+
+  const removeComment = (id:string)=>{
+    console.log(id)
+  }
   return(
     <div>
-      <RemoveBtn>✕</RemoveBtn>
+      <RemoveBtn onClick={() => removeComment(id)}>✕</RemoveBtn>
     </div>
   )
 }
@@ -12,7 +20,7 @@ export default RemoveButton;
 
 const RemoveBtn = styled.div`
     width: 20px;
-    height: 30px;
+    height: 20px;
     margin: 0 10px;
     border: none;
     background-color: white;

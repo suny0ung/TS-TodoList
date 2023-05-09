@@ -29,6 +29,7 @@ export default App;
 const TotalWrap = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 const Title = styled.h1`
