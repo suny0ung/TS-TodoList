@@ -2,10 +2,10 @@ import React, { useState, Dispatch, SetStateAction  } from "react";
 import styled from "@emotion/styled";
 // import {v4 as uuidv4} from 'uuid';
 import {v4} from 'uuid';
-import {Todo} from './interfacesTodo'
+import {Todo} from '../types/interfacesTodo'
 
 type TodoFormProps = {
-  inputArray: Todo[];
+  inputArray: Todo[],
   setInputArray: Dispatch<SetStateAction<Todo[]>>
 }
 
@@ -14,7 +14,7 @@ function TodoForm({inputArray, setInputArray}:TodoFormProps){
 
   const uuid = v4();
 
-  //
+  //재랜더링 방지
   const onSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
     console.log(inputValue);
@@ -23,7 +23,7 @@ function TodoForm({inputArray, setInputArray}:TodoFormProps){
   function addTodo (){
     const newTodo = {id: uuid, inputValue: inputValue};
 
-    setInputArray([...inputArray, newTodo]);
+    setInputArray(todoInfo=>[...todoInfo, newTodo]);
 
     setInputValue('')
 
@@ -59,8 +59,13 @@ const Form = styled.form`
 `;
 
 const InputBox = styled.input`
-  width: 401px;
+  width: 100vw;
+  max-width: 1024px;
+  min-width: 100px;
   height: 31px;
+  @media screen and (max-width: 500px){
+    width: 300px;
+  }
 `;
 
 const InputButton = styled.button`

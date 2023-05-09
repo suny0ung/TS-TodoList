@@ -1,12 +1,18 @@
+import { Dispatch, SetStateAction  } from "react";
 import styled from '@emotion/styled';
+import {Todo} from "./interfacesTodo";
+
 
 type RemoveProps = {
-  id : string;
+  id : string,
+  setInputArray: Dispatch<SetStateAction<Todo[]>>
 }
 
-function RemoveButton ({id}: RemoveProps){
+function RemoveButton ({id, setInputArray}: RemoveProps){
 
   const removeComment = (id:string)=>{
+    //중요합니다! 콜백 스테이트 (스냅샷개념 공부)
+    setInputArray((inputValue)=>inputValue.filter((todo)=>todo.id !== id))
     console.log(id)
   }
   return(

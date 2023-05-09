@@ -2,9 +2,9 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import './App.css'
-import TodoForm from "./component/TodoForm";
-import TodoList from "./component/TodoList";
-import {Todo} from "./component/interfacesTodo";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+import {Todo} from './types/interfacesTodo';
 
 //Todo Emotion Provider 설정
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <TotalWrap>
       <div>
         <Title> ToDo List </Title>
-        <TodoList inputArray={inputArray}/>
+        <TodoList inputArray={inputArray} setInputArray={setInputArray}/>
         <TodoForm inputArray={inputArray} setInputArray={setInputArray}/>
       </div>
     </TotalWrap>
@@ -35,4 +35,10 @@ const TotalWrap = styled.div`
 const Title = styled.h1`
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width: 500px){
+    font-size: 30px;
+    margin: 0;
+  }
+
 `;

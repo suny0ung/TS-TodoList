@@ -1,18 +1,31 @@
+import { Dispatch, SetStateAction, useState  } from "react";
 import styled from '@emotion/styled';
 import RemoveButton from './RemoveButton';
 import DoneButton from './doneButton';
-//input 내용 보여주기
+import {Todo} from "./interfacesTodo";
+
 type TodoItemProps = {
   id: string,
-  value: string
+  inputValue: string,
+  completed?: boolean;
+  inputArray: Todo[],
+  setInputArray: Dispatch<SetStateAction<Todo[]>>
 }
 
-function TodoItem({id, value}: TodoItemProps){
+function TodoItem({ id, inputValue, setInputArray, completed}: TodoItemProps){
+  const [changeCheckBox, setChangeCheckBox]=useState<boolean>(false);
+
+  const handleCheckedBox = (event: React.MouseEvent<HTMLElement>) => {
+    if(event === true){
+      setChangeCheckBox(true)
+    }
+  }
+
   return(
-    <ItemWrap key={id}>
-      <DoneButton />
-      <Item>{value}</Item>
-      <RemoveButton id={id}/>
+    <ItemWrap>
+      <DoneButton completed={completed} onClick={()=>handleCheckedBox(id)}/>
+      <Item>{inputValue}</Item>
+      <RemoveButton id={id} setInputArray={setInputArray}/>
     </ItemWrap>
   )
 }
@@ -27,5 +40,4 @@ const ItemWrap = styled.div`
 
 const Item = styled.p`
   width: 100%;
-  background-color: yellow;
 `;
