@@ -1,38 +1,48 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
+import { Dispatch, SetStateAction } from 'react';
 
 interface DoneProps {
-  completed?: boolean,
-  onClick?():void
+  completed?: boolean;
+  isCheckBox: boolean;
+  setIsCheckBox: Dispatch<SetStateAction<boolean>>;
+  // onClick?(): void;
 }
 
-function DoneButton ({ onClick, completed}:DoneProps){
+function DoneButton({ isCheckBox, setIsCheckBox }: DoneProps) {
+  // const [isCheckBox, setIsCheckBox] = useState<boolean>(false);
 
+  //클로저 숙제
+  const handleCheckedBox = (event: React.MouseEvent<HTMLElement>) => {
+    setIsCheckBox(completed => !completed);
+  };
 
-
-  return(
+  return (
     <div>
-      <DoneInputBox onClick={onClick}>
-        {   completed && "✓"}
-
+      <DoneInputBox onClick={handleCheckedBox}>
+        {isCheckBox && '✓'}
       </DoneInputBox>
     </div>
-  )
+  );
 }
 
 export default DoneButton;
 
 const DoneInputBox = styled.div`
-  width: 20px;
+  width: 23px;
   height: 20px;
-
   margin: 0 10px;
+  padding: 3px 0 0 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   border: 1px solid #dee2e6;
-  
-  color: #06AD46;
 
-  &:hover{
+  font-size: 20px;
+  color: #06ad46;
+
+  &:hover {
     border: 1px solid black;
   }
 `;
-

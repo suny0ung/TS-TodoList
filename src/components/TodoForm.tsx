@@ -1,31 +1,31 @@
-import React, { useState, Dispatch, SetStateAction  } from "react";
-import styled from "@emotion/styled";
+import React, { useState, Dispatch, SetStateAction } from 'react';
+import styled from '@emotion/styled';
 // import {v4 as uuidv4} from 'uuid';
-import {v4} from 'uuid';
-import {Todo} from '../types/interfacesTodo'
+import { v4 } from 'uuid';
+import { Todo } from '../types/interfacesTodo';
 
 type TodoFormProps = {
-  inputArray: Todo[],
-  setInputArray: Dispatch<SetStateAction<Todo[]>>
-}
+  inputArray: Todo[];
+  setInputArray: Dispatch<SetStateAction<Todo[]>>;
+};
 
-function TodoForm({inputArray, setInputArray}:TodoFormProps){
+function TodoForm({ setInputArray }: TodoFormProps) {
   const [inputValue, setInputValue] = useState<string>('');
 
   const uuid = v4();
 
   //재랜더링 방지
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(inputValue);
-  }
+  };
 
-  function addTodo (){
-    const newTodo = {id: uuid, inputValue: inputValue};
+  function addTodo() {
+    const newTodo = { id: uuid, inputValue: inputValue };
 
-    setInputArray(todoInfo=>[...todoInfo, newTodo]);
+    setInputArray(todoInfo => [...todoInfo, newTodo]);
 
-    setInputValue('')
+    setInputValue('');
 
     // inputArray.push({id: uuid, value: inputValue})
 
@@ -33,19 +33,21 @@ function TodoForm({inputArray, setInputArray}:TodoFormProps){
     //   ...prev,
     //   {id: uuid, value: inputValue}
     // ]))
-    
   }
 
   // input 값을 받아서 InputArray에 추가해준다.
-  return(
+  return (
     <div>
       <Form onSubmit={onSubmit}>
-        <InputBox placeholder="입력란" value={inputValue} onChange={(e)=>setInputValue(e.target.value)}></InputBox>
+        <InputBox
+          placeholder="입력란"
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
+        ></InputBox>
         <InputButton onClick={addTodo}>추가</InputButton>
       </Form>
     </div>
-
-  )
+  );
 }
 
 export default TodoForm;
@@ -63,8 +65,8 @@ const InputBox = styled.input`
   max-width: 1024px;
   min-width: 100px;
   height: 31px;
-  @media screen and (max-width: 500px){
-    width: 300px;
+  @media screen and (max-width: 500px) {
+    width: 400px;
   }
 `;
 

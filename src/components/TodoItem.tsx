@@ -12,16 +12,19 @@ type TodoItemProps = {
   setInputArray: Dispatch<SetStateAction<Todo[]>>;
 };
 
-function TodoItem({ id, inputValue, setInputArray, completed }: TodoItemProps) {
-  const [changeCheckBox, setChangeCheckBox] = useState<boolean>(false);
-
-  //클로저 숙제
-  const handleCheckedBox = (event: React.MouseEvent<HTMLElement>) => {};
+function TodoItem({ id, inputValue, setInputArray }: TodoItemProps) {
+  // const [isCheckBox, setIsCheckBox] = useState<typeof completed>(false);
+  const [isCheckBox, setIsCheckBox] = useState<boolean>(false);
 
   return (
     <ItemWrap>
-      <DoneButton completed={completed} onClick={handleCheckedBox} />
-      <Item>{inputValue}</Item>
+      <DoneButton isCheckBox={isCheckBox} setIsCheckBox={setIsCheckBox} />
+      {isCheckBox ? (
+        <DoneItem>{inputValue}</DoneItem>
+      ) : (
+        <Item>{inputValue}</Item>
+      )}
+      {/* <Item>{inputValue}</Item> */}
       <RemoveButton id={id} setInputArray={setInputArray} />
     </ItemWrap>
   );
@@ -37,4 +40,10 @@ const ItemWrap = styled.div`
 
 const Item = styled.p`
   width: 100%;
+`;
+
+const DoneItem = styled.p`
+  width: 100%;
+  color: #c5c8ca;
+  text-decoration: line-through;
 `;
