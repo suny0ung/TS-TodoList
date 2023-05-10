@@ -2,17 +2,14 @@ import styled from '@emotion/styled';
 import { Dispatch, SetStateAction } from 'react';
 
 interface DoneProps {
-  completed?: boolean;
   isCheckBox: boolean;
   setIsCheckBox: Dispatch<SetStateAction<boolean>>;
-  // onClick?(): void;
 }
 
 function DoneButton({ isCheckBox, setIsCheckBox }: DoneProps) {
   // const [isCheckBox, setIsCheckBox] = useState<boolean>(false);
-
   //클로저 숙제
-  const handleCheckedBox = (event: React.MouseEvent<HTMLElement>) => {
+  const handleCheckedBox = () => {
     setIsCheckBox(completed => !completed);
   };
 
