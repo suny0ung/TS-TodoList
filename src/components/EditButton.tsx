@@ -31,7 +31,6 @@ const EditButton = ({ setInputArray, id }: Props) => {
 
   return (
     //수정버튼
-
     <EditWrap>
       {/* {!isEdited && <EditBtn type="button"> ✎ </EditBtn>} */}
       {isEdited ? (

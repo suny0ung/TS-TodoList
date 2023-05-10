@@ -7,8 +7,6 @@ interface DoneProps {
 }
 
 function DoneButton({ isCheckBox, setIsCheckBox }: DoneProps) {
-  // const [isCheckBox, setIsCheckBox] = useState<boolean>(false);
-  //클로저 숙제
   const handleCheckedBox = () => {
     setIsCheckBox(completed => !completed);
   };

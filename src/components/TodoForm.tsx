@@ -55,14 +55,12 @@ const InputBox = styled.input`
   width: 100vw;
   max-width: 1024px;
   min-width: 100px;
-  /* height: 31px; */
   height: 40px;
 
   border: none;
 
   @media screen and (max-width: 500px) {
     width: 400px;
-    display: block;
   }
   &::placeholder {
     padding-left: 7px;

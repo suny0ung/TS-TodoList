@@ -9,7 +9,9 @@ type RemoveProps = {
 
 function RemoveButton({ id, setInputArray }: RemoveProps) {
   const removeComment = (id: string) => {
-    setInputArray(inputValue => inputValue.filter(todo => todo.id !== id));
+    setInputArray(prevInputValue =>
+      prevInputValue.filter(todo => todo.id !== id)
+    );
 
     console.log(id);
   };
