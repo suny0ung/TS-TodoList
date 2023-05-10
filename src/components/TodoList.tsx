@@ -3,10 +3,7 @@ import styled from '@emotion/styled';
 import TodoItem from './TodoItem';
 import { Todo } from '../types/interfacesTodo';
 
-//아이템들 map으로 나열
-
 interface TodoListProps {
-  // inputValue: string,
   inputArray: Todo[];
   setInputArray: Dispatch<SetStateAction<Todo[]>>;
 }
@@ -32,8 +29,11 @@ export default TodoList;
 const TodoItemBox = styled.div`
   width: 100%;
   height: 300px;
+  padding: 10px 0;
+
   overflow-y: scroll;
-  border: 1px solid gray;
+  border-bottom: 1px solid #adb2b7;
+
   @media screen and (max-width: 500px) {
     width: 100%;
     height: 550px;

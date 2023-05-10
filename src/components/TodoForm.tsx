@@ -14,7 +14,6 @@ function TodoForm({ setInputArray }: TodoFormProps) {
 
   const uuid = v4();
 
-  //재랜더링 방지
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(inputValue);
@@ -26,21 +25,13 @@ function TodoForm({ setInputArray }: TodoFormProps) {
     setInputArray(todoInfo => [...todoInfo, newTodo]);
 
     setInputValue('');
-
-    // inputArray.push({id: uuid, value: inputValue})
-
-    // setInputArray((prev: inputArray) => ([
-    //   ...prev,
-    //   {id: uuid, value: inputValue}
-    // ]))
   }
 
-  // input 값을 받아서 InputArray에 추가해준다.
   return (
     <div>
       <Form onSubmit={onSubmit}>
         <InputBox
-          placeholder="입력란"
+          placeholder="할 일을 입력해 주세요"
           value={inputValue}
           onChange={e => setInputValue(e.target.value)}
         ></InputBox>
@@ -64,18 +55,35 @@ const InputBox = styled.input`
   width: 100vw;
   max-width: 1024px;
   min-width: 100px;
-  height: 31px;
+  /* height: 31px; */
+  height: 40px;
+
+  border: none;
+
   @media screen and (max-width: 500px) {
     width: 400px;
+    display: block;
+  }
+  &::placeholder {
+    padding-left: 7px;
+    font-size: 15px;
   }
 `;
 
 const InputButton = styled.button`
   width: 70px;
-  height: 37px;
+  height: 44px;
+
   position: absolute;
-  right: -2px;
-  border: 1px solid gray;
+  right: -1px;
+
+  background-color: #e4edf6;
+  border: 1px solid #adb2b7;
+
   font-size: 13px;
-  border-radius: 0;
+
+  &:hover {
+    background-color: #9cc7f1;
+    color: white;
+  }
 `;
