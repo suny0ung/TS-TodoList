@@ -16,7 +16,7 @@ function TodoForm({ setInputArray }: TodoFormProps) {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(inputValue);
+    // console.log(inputValue);
   };
 
   function addTodo() {

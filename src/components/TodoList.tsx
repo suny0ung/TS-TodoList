@@ -6,12 +6,19 @@ import { Todo } from '../types/interfacesTodo';
 interface TodoListProps {
   inputArray: Todo[];
   setInputArray: Dispatch<SetStateAction<Todo[]>>;
+  limitItem: number;
+  offsetItem: number;
 }
 
-const TodoList = ({ inputArray, setInputArray }: TodoListProps) => {
+const TodoList = ({
+  inputArray,
+  setInputArray,
+  limitItem,
+  offsetItem,
+}: TodoListProps) => {
   return (
     <TodoItemBox>
-      {inputArray.map(item => (
+      {inputArray.slice(offsetItem, offsetItem + limitItem).map(item => (
         <TodoItem
           key={item.id}
           id={item.id}
@@ -28,10 +35,10 @@ export default TodoList;
 
 const TodoItemBox = styled.div`
   width: 100%;
-  height: 300px;
+  height: 320px;
   padding: 10px 0;
-
   overflow-y: scroll;
+  overflow: hidden;
   border-bottom: 1px solid #adb2b7;
 
   @media screen and (max-width: 500px) {
