@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import styled from '@emotion/styled';
-import RemoveButton from './RemoveButton';
-import DoneButton from './doneButton';
-import EditButton from './EditButton';
-import { Todo } from '../types/interfacesTodo';
+import RemoveButton from '../button/RemoveButton';
+import DoneButton from '../button/DoneButton';
+import EditButton from '../button/EditButton';
+import { Todo } from '../../types/interfacesTodo';
 
 type TodoItemProps = {
   id: string;
@@ -35,5 +35,5 @@ const ItemWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 5px;
+  padding: 0 20px;
 `;
