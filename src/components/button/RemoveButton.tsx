@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import styled from '@emotion/styled';
-import { Todo } from '../types/interfacesTodo';
+import { Todo } from '../../types/interfacesTodo';
 
 type RemoveProps = {
   id: string;

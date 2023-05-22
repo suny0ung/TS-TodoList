@@ -1,21 +1,41 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import './App.css';
-import TodoForm from './components/TodoForm';
-import TodoList from './components/TodoList';
+import TodoForm from './components/todoFunction/TodoForm';
+import TodoList from './components/todoFunction/TodoList';
+import Pagination from './components/pagination/Pagination';
 import { Todo } from './types/interfacesTodo';
 
 function App() {
   const [inputArray, setInputArray] = useState<Todo[]>([]);
+
+  //시작하는 페이지 값-> 1
+  const [pageNum, setPageNum] = useState(1);
+
+  //한 페이지당 보여줄 아이템의 갯수 -> 5개
+  const limitItem = 5;
+  const offsetItem = (pageNum - 1) * limitItem;
 
   return (
     <TotalWrap>
       <div>
         <Title> ToDo List </Title>
         <TodoWrap>
-          <TodoList inputArray={inputArray} setInputArray={setInputArray} />
+          <TodoList
+            inputArray={inputArray}
+            setInputArray={setInputArray}
+            limitItem={limitItem}
+            offsetItem={offsetItem}
+          />
           <TodoForm inputArray={inputArray} setInputArray={setInputArray} />
         </TodoWrap>
+        <Pagination
+          inputArray={inputArray}
+          pageNum={pageNum}
+          setPageNum={setPageNum}
+          limitItem={limitItem}
+          offsetItem={offsetItem}
+        />
       </div>
     </TotalWrap>
   );
@@ -35,7 +55,7 @@ const Title = styled.h1`
 
   color: #6989a9;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
     font-size: 30px;
     margin: 0;
   }

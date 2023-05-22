@@ -2,7 +2,7 @@ import React, { useState, Dispatch, SetStateAction } from 'react';
 import styled from '@emotion/styled';
 // import {v4 as uuidv4} from 'uuid';
 import { v4 } from 'uuid';
-import { Todo } from '../types/interfacesTodo';
+import { Todo } from '../../types/interfacesTodo';
 
 type TodoFormProps = {
   inputArray: Todo[];
@@ -16,7 +16,7 @@ function TodoForm({ setInputArray }: TodoFormProps) {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(inputValue);
+    // console.log(inputValue);
   };
 
   function addTodo() {
@@ -46,20 +46,20 @@ export default TodoForm;
 const Form = styled.form`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
 `;
 
 const InputBox = styled.input`
   width: 100vw;
-  max-width: 1024px;
-  min-width: 100px;
+  max-width: 1056px;
+  min-width: 500px;
+  padding-left: 20px;
   height: 40px;
-
   border: none;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 700px) {
     width: 400px;
   }
   &::placeholder {
