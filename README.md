@@ -1,4 +1,4 @@
-# weggle-TodoList
+# Typescript TodoList
 
 #### 영상
 
